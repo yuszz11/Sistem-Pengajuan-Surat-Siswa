@@ -1,39 +1,39 @@
-const URL_GOOGLE_APPS_SCRIPT ="https://script.google.com/macros/s/AKfycbx2xIIIizyX_WXOC5oXikcAo6UApZL-VHlZFik5-nL3x1uOEyTkvL0htTFIOR5JqC9D5Q/exec";
+// =====================================================
+// URL GOOGLE APPS SCRIPT
+// =====================================================
+
+const URL_GOOGLE_APPS_SCRIPT =
+    "https://script.google.com/macros/s/AKfycbz-WjJBG1VXFye3FrnOGpX37FBZlaA59W2mWoPUWVAyF_mPApzb3MNzsWPNoxdDqZ6OnA/exec";
 
 
-// Ambil elemen form
+// =====================================================
+// AMBIL ELEMENT HTML
+// =====================================================
 
 const form = document.getElementById("suratForm");
-
-const notification =
-    document.getElementById("notification");
-
-const submitBtn =
-    document.getElementById("submitBtn");
+const notification = document.getElementById("notification");
+const submitBtn = document.getElementById("submitBtn");
 
 
-// Saat form dikirim
+// =====================================================
+// EVENT SUBMIT FORM
+// =====================================================
 
-form.addEventListener("submit", async function(event) {
+form.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
 
-    // Ambil data
+    // Ambil data dari form
 
     const data = {
+        nama: document.getElementById("nama").value.trim(),
 
-        nama:
-            document.getElementById("nama").value.trim(),
+        nis: document.getElementById("nis").value.trim(),
 
-        nis:
-            document.getElementById("nis").value.trim(),
+        kelas: document.getElementById("kelas").value,
 
-        kelas:
-            document.getElementById("kelas").value,
-
-        jurusan:
-            document.getElementById("jurusan").value,
+        jurusan: document.getElementById("jurusan").value,
 
         jenisSurat:
             document.getElementById("jenisSurat").value,
@@ -43,24 +43,25 @@ form.addEventListener("submit", async function(event) {
 
         whatsapp:
             document.getElementById("whatsapp").value.trim()
-
     };
 
 
-    // Validasi
+    // =================================================
+    // VALIDASI DATA
+    // =================================================
 
     if (
-        !data.nama ||
-        !data.nis ||
-        !data.kelas ||
-        !data.jurusan ||
-        !data.jenisSurat ||
-        !data.keperluan ||
-        !data.whatsapp
+        data.nama === "" ||
+        data.nis === "" ||
+        data.kelas === "" ||
+        data.jurusan === "" ||
+        data.jenisSurat === "" ||
+        data.keperluan === "" ||
+        data.whatsapp === ""
     ) {
 
         showNotification(
-            "Harap lengkapi semua data!",
+            "❌ Semua data harus diisi!",
             "error"
         );
 
@@ -68,20 +69,42 @@ form.addEventListener("submit", async function(event) {
     }
 
 
-    // Ubah tombol
+    // =================================================
+    // VALIDASI URL
+    // =================================================
+
+    if (
+        URL_GOOGLE_APPS_SCRIPT ===
+        "MASUKKAN_URL_WEB_APP_GOOGLE_APPS_SCRIPT_DI_SINI"
+    ) {
+
+        showNotification(
+            "❌ URL Google Apps Script belum dimasukkan!",
+            "error"
+        );
+
+        return;
+    }
+
+
+    // =================================================
+    // TOMBOL LOADING
+    // =================================================
 
     submitBtn.disabled = true;
 
-    submitBtn.innerText =
-        "Mengirim...";
+    submitBtn.innerText = "Mengirim data...";
 
 
     try {
 
+        // =================================================
+        // KIRIM DATA KE GOOGLE APPS SCRIPT
+        // =================================================
+
         await fetch(
             URL_GOOGLE_APPS_SCRIPT,
             {
-
                 method: "POST",
 
                 mode: "no-cors",
@@ -92,35 +115,44 @@ form.addEventListener("submit", async function(event) {
                 },
 
                 body: JSON.stringify(data)
-
             }
         );
 
 
-        // Berhasil
+        // =================================================
+        // NOTIFIKASI BERHASIL
+        // =================================================
 
         showNotification(
-            "Pengajuan berhasil dikirim! Data telah tersimpan.",
+            "✅ Pengajuan berhasil dikirim dan disimpan ke Google Sheets!",
             "success"
         );
 
 
-        // Reset form
+        // Kosongkan form
 
         form.reset();
 
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Error:",
+            error
+        );
+
 
         showNotification(
-            "Terjadi kesalahan saat mengirim data.",
+            "❌ Gagal mengirim data. Silakan coba lagi.",
             "error"
         );
 
     }
 
+
+    // =================================================
+    // KEMBALIKAN TOMBOL
+    // =================================================
 
     submitBtn.disabled = false;
 
@@ -130,7 +162,9 @@ form.addEventListener("submit", async function(event) {
 });
 
 
-// Fungsi notifikasi
+// =====================================================
+// FUNGSI NOTIFIKASI
+// =====================================================
 
 function showNotification(message, type) {
 
@@ -138,6 +172,7 @@ function showNotification(message, type) {
 
     notification.className =
         "notification " + type;
+
 
     notification.scrollIntoView({
         behavior: "smooth",
