@@ -1,5 +1,5 @@
 const URL_GOOGLE_APPS_SCRIPT =
-    "https://script.google.com/macros/s/AKfycbxkGgxr4dYuSJTvjk_GJDH44i00iYkht_IkaVOejMDc37ZfLndZ3yWjZducrvZFbyq-/exec";
+    "https://script.google.com/macros/s/AKfycbxkulq0zKDZaGbK3iH1YcjltGBbGJOOk-_XLVBztklUjLRmIr0jPV_1pfijJPR3tpwVgw/exec";
 
 
 // Ambil elemen form
