@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIPES - Sistem Pengajuan Surat Siswa</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            SIPES
+        </div>
+
+        <div class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#pengajuan">Pengajuan</a>
+            <a href="#tentang">Tentang</a>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <span class="badge">
+                SISTEM INFORMASI SEKOLAH
+            </span>
+
+            <h1>
+                Sistem Pengajuan<br>
+                Surat Siswa
+            </h1>
+
+            <p>
+                Ajukan surat sekolah dengan mudah, cepat,
+                dan dapat dipantau secara online.
+            </p>
+
+            <a href="#pengajuan" class="btn">
+                Ajukan Surat
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- PENGAJUAN -->
+    <section id="pengajuan" class="section">
+
+        <div class="section-title">
+            <span>FORMULIR</span>
+            <h2>Pengajuan Surat</h2>
+            <p>
+                Silakan isi data dengan benar sebelum mengirim pengajuan.
+            </p>
+        </div>
+
+
+        <div class="form-card">
+
+            <form id="suratForm">
+
+                <div class="form-group">
+                    <label for="nama">
+                        Nama Lengkap
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nama"
+                        placeholder="Masukkan nama lengkap"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="nis">
+                            NIS
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nis"
+                            placeholder="Masukkan NIS"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="kelas">
+                            Kelas
+                        </label>
+
+                        <select id="kelas" required>
+
+                            <option value="">
+                                Pilih kelas
+                            </option>
+
+                            <option value="X">
+                                X
+                            </option>
+
+                            <option value="XI">
+                                XI
+                            </option>
+
+                            <option value="XII">
+                                XII
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="jurusan">
+                        Jurusan
+                    </label>
+
+                    <select id="jurusan" required>
+
+                        <option value="">
+                            Pilih jurusan
+                        </option>
+
+                        <option value="RPL">
+                            RPL
+                        </option>
+
+                        <option value="TKJ">
+                            TKJ
+                        </option>
+
+                        <option value="TKR">
+                            TKR
+                        </option>
+
+                        <option value="MPLB">
+                            MPLB
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="jenisSurat">
+                        Jenis Surat
+                    </label>
+
+                    <select id="jenisSurat" required>
+
+                        <option value="">
+                            Pilih jenis surat
+                        </option>
+
+                        <option value="Surat Keterangan Siswa">
+                            Surat Keterangan Siswa
+                        </option>
+
+                        <option value="Surat Izin">
+                            Surat Izin
+                        </option>
+
+                        <option value="Surat Keterangan Aktif">
+                            Surat Keterangan Aktif
+                        </option>
+
+                        <option value="Surat Pengantar">
+                            Surat Pengantar
+                        </option>
+
+                        <option value="Surat Keterangan PKL">
+                            Surat Keterangan PKL
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="keperluan">
+                        Keperluan Surat
+                    </label>
+
+                    <textarea
+                        id="keperluan"
+                        rows="4"
+                        placeholder="Jelaskan keperluan surat..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="whatsapp">
+                        Nomor WhatsApp
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="whatsapp"
+                        placeholder="Contoh: 081234567890"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn submit-btn"
+                    id="submitBtn"
+                >
+                    Kirim Pengajuan
+                </button>
+
+            </form>
+
+
+            <!-- NOTIFIKASI -->
+
+            <div
+                id="notification"
+                class="notification"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- KEUNTUNGAN -->
+
+    <section class="section benefits">
+
+        <div class="section-title">
+
+            <span>KEUNTUNGAN</span>
+
+            <h2>Mengapa Menggunakan SIPES?</h2>
+
+        </div>
+
+
+        <div class="benefit-container">
+
+            <div class="benefit-card">
+
+                <div class="icon">
+                    📝
+                </div>
+
+                <h3>Mudah</h3>
+
+                <p>
+                    Siswa dapat mengajukan surat
+                    melalui website tanpa harus mengisi
+                    formulir manual.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <div class="icon">
+                    ⚡
+                </div>
+
+                <h3>Cepat</h3>
+
+                <p>
+                    Data pengajuan langsung tersimpan
+                    ke sistem sehingga lebih mudah
+                    diproses.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <div class="icon">
+                    📊
+                </div>
+
+                <h3>Tersimpan</h3>
+
+                <p>
+                    Semua data pengajuan tersimpan
+                    secara terstruktur di Google Sheets.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TENTANG -->
+
+    <section id="tentang" class="about">
+
+        <h2>Tentang SIPES</h2>
+
+        <p>
+            SIPES merupakan sistem berbasis web yang
+            membantu siswa mengajukan surat sekolah
+            secara online. Sistem ini menggunakan
+            Google Sheets sebagai tempat penyimpanan data.
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 SIPES - Sistem Pengajuan Surat Siswa
+        </p>
+
+        <p>
+            Dibuat untuk kebutuhan administrasi sekolah
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
